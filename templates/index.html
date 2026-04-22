@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analyzer</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 500px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input, textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .score {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .skills {
+            margin-top: 10px;
+        }
+
+        .missing {
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>AI Resume Analyzer</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="resume" required>
+
+            <textarea name="job_desc" rows="5"
+            placeholder="Paste Job Description here"></textarea>
+
+            <br>
+            <button type="submit">Analyze</button>
+        </form>
+
+        <div class="result">
+            {% if score %}
+                <p class="score">Match Score: {{score}}%</p>
+            {% endif %}
+
+            {% if skills %}
+                <p class="skills"><b>Your Skills:</b> {{skills}}</p>
+            {% endif %}
+
+            {% if missing %}
+                <p class="missing"><b>Missing Skills:</b> {{missing}}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
